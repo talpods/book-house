@@ -1,0 +1,49 @@
+@host= http://localhost:5000/api/users
+@type = application/json
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InVzZXJzI2FobWVkQGFobWVkLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjQ1NzA4OTU4LCJleHAiOjE2NDYzMTM3NTh9.AG5N7xZXNLFg-d5r6cLrq1Ha8gskgjHIMuwHQvc-SpI
+
+### SignUp
+POST {{host}}
+Content-Type: {{type}}
+
+{
+  "first_name":"ahmed",
+  "last_name":"khaled",
+  "email":"ahmed@ahmed.com",
+  "password":"12345678"
+}
+
+
+### SignIn
+POST {{host}}/sign-in
+Content-Type: {{type}}
+
+{
+  "email":"ahmed@ahmed.com",
+  "password":"123456789"
+}
+
+### user info
+GET {{host}}
+Authorization: Bearer {{token}}
+
+### update user info
+PUT {{host}}
+Authorization: Bearer {{token}}
+Content-Type: {{type}}
+
+{
+  "first_name":"ahmed",
+  "last_name":"khaled",
+  "photo":"130"
+}
+
+### update user password
+PUT {{host}}/change-password
+Authorization: Bearer {{token}}
+Content-Type: {{type}}
+
+{
+"oldPassword":"123456789",
+"newPassword":"12345678"
+}

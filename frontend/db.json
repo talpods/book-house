@@ -1,0 +1,514 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "first_name": "Leanne",
+      "last_name": "Graham",
+      "email": "Sincere@april.biz",
+      "password": "password1",
+      "address": "apatment 2 st.4",
+      "phone": "0102333333333",
+      "photo": "https://tvline.com/wp-content/uploads/2021/08/OKOP-Yaya-DaCosta-.jpg"
+    },
+    {
+      "id": 2,
+      "first_name": "Ervin",
+      "last_name": "Howell",
+      "email": "Shanna@melissa.tv",
+      "password": "password1",
+      "photo": "https://www.mckinsey.com/~/media/mckinsey/our%20people/dana%20maor/dana-maor_profile_1536x1152.jpg?mw=400&car=2:2"
+    },
+    {
+      "id": 3,
+      "first_name": "Clementine",
+      "last_name": "Bauch",
+      "email": "Nathan@yesenia.net",
+      "password": "password1",
+      "photo": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/how-to-love-yourself-1574682223.jpg"
+    },
+    {
+      "id": 4,
+      "first_name": "Patricia",
+      "last_name": "Lebsack",
+      "email": "Julianne.OConner@kory.org",
+      "password": "password1",
+      "photo": "https://imageio.forbes.com/specials-images/imageserve/5f64397931669e167fc57eaf/960x0.jpg?fit=bounds&format=jpg&width=960"
+    },
+    {
+      "id": 5,
+      "first_name": "Chelsey",
+      "last_name": "Dietrich",
+      "email": "Lucio_Hettinger@annie.ca",
+      "password": "password1",
+      "photo": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/02/Female_Portrait_1296x728-header-1296x729.jpg?w=1155&h=2268"
+    },
+    {
+      "first_name": "Moahmed",
+      "last_name": "Farag",
+      "email": "mhassan21@yahoo.com",
+      "password": "Mofeufh5165",
+      "id": "n-PlmOX"
+    },
+    {
+      "first_name": "Hassan",
+      "last_name": "Jamal",
+      "email": "mhassan55@yahoo.com",
+      "password": "egerg#MM",
+      "id": "IsYrJzG"
+    },
+    {
+      "first_name": "Moahmed",
+      "last_name": "Farag",
+      "email": "mhassan21@yahoo.com",
+      "password": "gergerM#598",
+      "id": 6
+    },
+    {
+      "first_name": "Moahmed",
+      "last_name": "Farag",
+      "email": "mhassan21@yahoo.com",
+      "password": "Hassan202#",
+      "id": 7
+    },
+    {
+      "first_name": "Moahmed",
+      "last_name": "Farag",
+      "email": "mhassan21@yahoo.com",
+      "password": "Hassan202#",
+      "id": 8
+    },
+    {
+      "first_name": "Moahmed",
+      "last_name": "Farag",
+      "email": "mhassan21@yahoo.com",
+      "password": "Hassan202$",
+      "id": 9
+    },
+    {
+      "first_name": "Moahmed",
+      "last_name": "Farag",
+      "email": "mhassan21@yahoo.com",
+      "password": "Hassan2020$",
+      "id": 10
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "adminId": "api",
+      "products": [
+        {
+          "title": "Reminders of Him",
+          "category": "Romance",
+          "price": 38,
+          "quantity": 1,
+          "photo": "https://m.media-amazon.com/images/I/41EiBLxybSL.jpg"
+        }
+      ],
+      "total_price": 250,
+      "created_at": "2022-2-5",
+      "user_id": "1",
+      "user": "Chelsey_Dietrich",
+      "order_number": "1125",
+      "shipping_address": {
+        "street": "Victor Plains",
+        "suite": "Suite 879",
+        "city": "Wisokyburgh",
+        "zipcode": "90566-7771"
+      },
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "adminId": "api",
+      "products": [
+        {
+          "title": "Reminders of Him",
+          "category": "Romance",
+          "price": 38,
+          "quantity": 1,
+          "photo": "https://m.media-amazon.com/images/I/41EiBLxybSL.jpg"
+        },
+        {
+          "title": "Apples Never Fall",
+          "category": "Fantasy",
+          "price": 5,
+          "quantity": 1,
+          "photo": "https://images-na.ssl-images-amazon.com/images/I/41c96JYqF8L._SX327_BO1,204,203,200_.jpg"
+        }
+      ],
+      "total_price": 250,
+      "created_at": "2022-2-9",
+      "user": "Ervin_Howell",
+      "order_number": "1126",
+      "shipping_address": {
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Gwenborough",
+        "zipcode": "92998-3874"
+      },
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "adminId": "api",
+      "products": [
+        {
+          "title": "Reminders of Him",
+          "category": "Romance",
+          "price": 38,
+          "quantity": 1,
+          "photo": "https://m.media-amazon.com/images/I/41EiBLxybSL.jpg"
+        },
+        {
+          "title": "Greenlights",
+          "category": "Biographie",
+          "price": 17,
+          "quantity": 1,
+          "photo": "https://images-na.ssl-images-amazon.com/images/I/51midYhXu8L._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+        },
+        {
+          "title": "Kingdom of the Cursed",
+          "category": "Fantasy",
+          "price": 6,
+          "quantity": 1,
+          "photo": "https://m.media-amazon.com/images/I/41EiBLxybSL.jpg"
+        }
+      ],
+      "total_price": 250,
+      "created_at": "2022-2-1",
+      "user": "Clementine_Bauch",
+      "user_id": "1",
+      "order_number": "1125",
+      "shipping_address": {
+        "street": "Douglas Extension",
+        "suite": "Suite 847",
+        "city": "McKenziehaven",
+        "zipcode": "59590-4157"
+      },
+      "status": "pending"
+    },
+    {
+      "id": 4,
+      "adminId": "api",
+      "products": [
+        {
+          "title": "Greenlights",
+          "author": "Matthew McConaughey",
+          "category": "Biographie",
+          "price": 17,
+          "quantity": 1,
+          "photo": "https://images-na.ssl-images-amazon.com/images/I/51midYhXu8L._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+        },
+        {
+          "title": "Kingdom of the Cursed",
+          "category": "Fantasy",
+          "price": 6,
+          "quantity": 1,
+          "photo": "https://m.media-amazon.com/images/I/41EiBLxybSL.jpg"
+        }
+      ],
+      "total_price": 250,
+      "created_at": "2022-2-2",
+      "user": "Patricia_Lebsack",
+      "order_number": "1128",
+      "shipping_address": {
+        "street": "Hoeger Mall",
+        "suite": "Apt. 692",
+        "city": "South Elvis",
+        "zipcode": "53919-4257"
+      },
+      "status": "pending"
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "userId": 5,
+      "products": [
+        {
+          "title": "Handling Protocols with the Net Component",
+          "author": "Charlie Collins",
+          "quantity": 1,
+          "price": 60,
+          "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/fritz.jpg"
+        },
+        {
+          "title": "Unlocking Android",
+          "author": "Charlie Collins",
+          "quantity": 1,
+          "price": 30,
+          "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 4,
+      "products": [
+        {
+          "title": "Handling Protocols with the Net Component",
+          "author": "Charlie Collins",
+          "quantity": 1,
+          "price": 60,
+          "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/fritz.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "products": [
+        {
+          "title": "It Ends with Us",
+          "author": "Colleen Hoover",
+          "quantity": 1,
+          "price": 12,
+          "photo": "https://images-na.ssl-images-amazon.com/images/I/51Zu0ZwT0jL._SX320_BO1,204,203,200_.jpg"
+        },
+        {
+          "title": "Apples Never Fall",
+          "author": "Liane Moriarty",
+          "quantity": 1,
+          "price": 5,
+          "photo": "https://images-na.ssl-images-amazon.com/images/I/41c96JYqF8L._SX327_BO1,204,203,200_.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "products": []
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "products": [
+        {
+          "title": "Will",
+          "author": "Will Smith",
+          "quantity": 1,
+          "price": 26,
+          "photo": "https://images-na.ssl-images-amazon.com/images/I/51f-G2GQwBL._SX327_BO1,204,203,200_.jpg"
+        }
+      ]
+    }
+  ],
+  "category": [
+    {
+      "id": "1",
+      "title": "Development",
+      "adminId": "api"
+    },
+    {
+      "id": "2",
+      "title": "Romance",
+      "adminId": "api"
+    },
+    {
+      "id": "3",
+      "title": "Self_Help",
+      "adminId": "api"
+    },
+    {
+      "id": "4",
+      "title": "Fantasy",
+      "adminId": "api"
+    },
+    {
+      "id": "5",
+      "title": "Biographies",
+      "adminId": "api"
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "Unlocking Android",
+      "author": "Charlie Collins",
+      "category": "Romance",
+      "price": 30,
+      "description": "Unlocking Android: A Developer's Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout.",
+      "publish_date": "2011-01-14",
+      "stock_quantity": 7,
+      "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Handling Protocols with the Net Component",
+      "author": "Charlie Collins",
+      "category": "Development",
+      "price": 60,
+      "description": "Remote LAN Access will help you cut through the haze typically encountered when designing and installing remote LAN connections.",
+      "publish_date": "1996-06-01",
+      "stock_quantity": 25,
+      "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/fritz.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Hello! HTML5 & CSS3",
+      "author": "Rob Crowther",
+      "category": "Development",
+      "price": 47,
+      "description": "Quick and Easy HTML5 and CSS3 is written for the web designer or developer who wants a fast, example-oriented introduction to the new HTML and CSS features. After a quick review of the basics, you'll turn to what's new. Start by learning to apply important new elements and attributes by building your first real HTML5 pages. You'll then take a quick tour through the new APIs: Form Validation, Canvas, Drag & Drop, Geolocation and Offline Applications. You'll also discover how to include video and audio on your pages without plug-ins, and how to draw interactive vector graphics with SVG.",
+      "publish_date": "2012-10-17",
+      "stock_quantity": 15,
+      "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/crowther.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Browsing with HttpClient",
+      "author": "Satnam Alag",
+      "category": "Development",
+      "price": 15,
+      "description": "Written for developers and architects with real work to do, the Jakarta Commons Online Bookshelf is a collection of 14 PDF modules, each focused on one of the main Commons components. Commons is a collection of over twenty open-source Java tools broadly ranging from logging, validation, bean utilities and XML parsing. The Jakarta Commons Online Bookshelf summarizes the rationale behind each component and then provides expert explanations and hands-on examples of their use. You will learn to easily incorporate the Jakarta Commons components into your existing Java applications.",
+      "publish_date": "2005-03-01",
+      "stock_quantity": 30,
+      "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/goyal1.jpg"
+    },
+    {
+      "id": 5,
+      "adminId": "api",
+      "title": "Zend Framework in Action",
+      "author": "Rob Allen",
+      "category": "Development",
+      "price": 30,
+      "description": "Zend Framework in Action is a comprehensive tutorial that shows how to use the Zend Framework to create web-based applications and web services. This book takes you on an over-the-shoulder tour of the components of the Zend Framework as you build a high quality, real-world web application.",
+      "publish_date": "2008-12-01",
+      "stock_quantity": 45,
+      "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/allen.jpg"
+    },
+    {
+      "id": 6,
+      "adminId": "api",
+      "title": "Reminders of Him",
+      "author": "Colleen Hoover",
+      "category": "Romance",
+      "price": 38,
+      "description": "After serving five years in prison for a tragic mistake, Kenna Rowan returns to the town where it all went wrong, hoping to reunite with her four-year-old daughter. But the bridges Kenna burned are proving impossible to rebuild. Everyone in her daughter's life is determined to shut Kenna out, no matter how hard she works to prove herself.",
+      "publish_date": "2022-1-18",
+      "stock_quantity": 45,
+      "photo": "https://m.media-amazon.com/images/I/41EiBLxybSL.jpg"
+    },
+    {
+      "id": 7,
+      "adminId": "api",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "category": "Self_Help",
+      "price": 17,
+      "description": "No matter your goals, Atomic Habits offers a proven framework for improving - every day. James Clear, one of the world's leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results.",
+      "publish_date": "2008-10-16",
+      "stock_quantity": 10,
+      "photo": "https://m.media-amazon.com/images/I/513Y5o-DYtL.jpg"
+    },
+    {
+      "id": 8,
+      "adminId": "api",
+      "title": "Things We Never Got Over",
+      "author": "Lucy Score",
+      "category": "Romance",
+      "price": 12,
+      "description": "Naomi wasn't just running away from her wedding. She was riding to the rescue of her estranged twin to Knockemout, Virginia, a rough-around-the-edges town where disputes are settled the old-fashioned way…with fists and beer. Usually in that order.",
+      "publish_date": "2022-1-5",
+      "stock_quantity": 15,
+      "photo": "https://m.media-amazon.com/images/I/41qiZpKBDvL.jpg"
+    },
+    {
+      "id": 9,
+      "adminId": "api",
+      "title": "Throne of Glass eBook Bundle",
+      "author": "Sarah J. Maas",
+      "category": "Fantasy",
+      "price": 27,
+      "description": "With the enigmatic Prince of Wrath at her side, Emilia sold her soul to become Queen of the Wicked and travelled to the Seven Circles to fulfil her vow of avenging her beloved sister.",
+      "publish_date": "2019-2-16",
+      "stock_quantity": 5,
+      "photo": "https://m.media-amazon.com/images/I/51dDVPNQn9L.jpg"
+    },
+    {
+      "id": 10,
+      "adminId": "api",
+      "title": "Kingdom of the Cursed",
+      "author": "Kerri Maniscalco",
+      "category": "Fantasy",
+      "price": 6,
+      "description": "After serving five years in prison for a tragic mistake, Kenna Rowan returns to the town where it all went wrong, hoping to reunite with her four-year-old daughter. But the bridges Kenna burned are proving impossible to rebuild. Everyone in her daughter's life is determined to shut Kenna out, no matter how hard she works to prove herself.",
+      "publish_date": "2022-1-2",
+      "stock_quantity": 12,
+      "photo": "https://m.media-amazon.com/images/I/41EiBLxybSL.jpg"
+    },
+    {
+      "id": 11,
+      "adminId": "api",
+      "title": "It Ends with Us",
+      "author": "Colleen Hoover",
+      "category": "Romance",
+      "price": 12,
+      "description": "Lily hasn’t always had it easy, but that’s never stopped her from working hard for the life she wants. She’s come a long way from the small town where she grew up—she graduated from college, moved to Boston, and started her own business. And when she feels a spark with a gorgeous neurosurgeon named Ryle Kincaid, everything in Lily’s life seems too good to be true.",
+      "publish_date": "2021-1-5",
+      "stock_quantity": 12,
+      "photo": "https://images-na.ssl-images-amazon.com/images/I/51Zu0ZwT0jL._SX320_BO1,204,203,200_.jpg"
+    },
+    {
+      "id": 12,
+      "adminId": "api",
+      "title": "The Widow",
+      "author": "K.L. Slater",
+      "category": "Fantasy",
+      "price": 38,
+      "description": "The day my husband, Michael, stepped in front of a lorry after being questioned by the police, my world fell apart. He was devoted to me and our six-year-old daughter. But they’d connected him to the disappearance of a young mother from our tiny village.",
+      "publish_date": "2021-9-9",
+      "stock_quantity": 2,
+      "photo": "https://images-na.ssl-images-amazon.com/images/I/41gNilh3ATL._SX322_BO1,204,203,200_.jpg"
+    },
+    {
+      "id": 13,
+      "adminId": "api",
+      "title": "Apples Never Fall",
+      "author": "Liane Moriarty",
+      "category": "Fantasy",
+      "price": 5,
+      "description": "The Delaneys are fixtures in their community. The parents, Stan and Joy, are the envy of all of their friends. They’re killers on the tennis court, and off it their chemistry is palpable. But after fifty years of marriage, they’ve finally sold their famed tennis academy and are ready to start what should be the golden years of their lives. So why are Stan and Joy so miserable?",
+      "publish_date": "2020-11-1",
+      "stock_quantity": 13,
+      "photo": "https://images-na.ssl-images-amazon.com/images/I/41c96JYqF8L._SX327_BO1,204,203,200_.jpg"
+    },
+    {
+      "id": 14,
+      "adminId": "api",
+      "title": "12 Rules for Life",
+      "author": "Jordan B. Peterson",
+      "category": "Self_Help",
+      "price": 7,
+      "description": "Humorous, surprising, and informative, Dr. Peterson tells us why skateboarding boys and girls must be left alone, what terrible fate awaits those who criticize too easily, and why you should always pet a cat when you meet one on the street.",
+      "publish_date": "2018-1-18",
+      "stock_quantity": 16,
+      "photo": "https://m.media-amazon.com/images/I/41bK7Jt8k+L.jpg"
+    },
+    {
+      "id": 15,
+      "adminId": "api",
+      "title": "Greenlights",
+      "author": "Matthew McConaughey",
+      "category": "Biographie",
+      "price": 17,
+      "description": "After serving five years in prison for a tragic mistake, Kenna Rowan returns to the town where it all went wrong, hoping to reunite with her four-year-old daughter. But the bridges Kenna burned are proving impossible to rebuild. Everyone in her daughter's life is determined to shut Kenna out, no matter how hard she works to prove herself.",
+      "publish_date": "2022-1-18",
+      "stock_quantity": 6,
+      "photo": "https://images-na.ssl-images-amazon.com/images/I/51midYhXu8L._SY291_BO1,204,203,200_QL40_FMwebp_.jpg"
+    },
+    {
+      "id": 16,
+      "adminId": "api",
+      "title": "Will",
+      "author": "Will Smith",
+      "category": "Biographie",
+      "price": 26,
+      "description": "Will Smith’s transformation from a West Philadelphia kid to one of the biggest rap stars of his era, and then one of the biggest movie stars in Hollywood history, is an epic tale—but it’s only half the story.",
+      "publish_date": "2021-12-9",
+      "stock_quantity": 6,
+      "photo": "https://images-na.ssl-images-amazon.com/images/I/51f-G2GQwBL._SX327_BO1,204,203,200_.jpg"
+    }
+  ]
+}

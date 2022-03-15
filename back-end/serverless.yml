@@ -1,0 +1,386 @@
+service: books-house-app
+frameworkVersion: "3"
+
+plugins:
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: eu-west-1
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - dynamodb:BatchGetItem
+            - s3:PutObject
+            - s3:GetObject
+            - s3:DeleteObject
+          Resource:
+            - arn:aws:dynamodb:eu-west-1:604091718886:table/book-db
+            - arn:aws:dynamodb:eu-west-1:604091718886:table/book-db/index/lsi1-index
+            - arn:aws:dynamodb:eu-west-1:604091718886:table/book-db/index/lsi2-index
+            - arn:aws:s3:::book-house-images
+
+        - Effect: Allow
+          Action:
+            - ses:*
+          Resource:
+            - arn:aws:ses:eu-west-1:604091718886:identity/mohameddev96@gmail.com
+
+        - Effect: Allow
+          Action:
+            - sns:*
+          Resource:
+            - arn:aws:sns:eu-west-1:604091718886:bh_cancel_order.fifo
+            - arn:aws:sns:eu-west-1:604091718886:bh_confirm_order.fifo
+
+functions:
+  books:
+    handler: components/books/handler.fun
+    vpc:
+      securityGroupIds:
+        - sg-02743eb2c4dcf777c
+      subnetIds:
+        - subnet-0753bf625540cb04d
+    events:
+      - http:
+          path: /api/books
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - limit
+              - last
+            allowCredentials: true
+      - http:
+          path: /api/books/category/{category}
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - limit
+              - last
+            allowCredentials: true
+      - http:
+          path: /api/books/book/{slug}
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /api/books
+          method: post
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
+      - http:
+          method: patch
+          path: /api/books/update-book/{slug}
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
+
+      - http:
+          path: /api/books/delete-book/{slug}
+          method: DELETE
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
+  categories:
+    handler: components/categories/frameworks/web/handler.execute
+    events:
+      - http:
+          path: /api/categories
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /api/categories
+          method: post
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /api/categories/{id}
+          method: delete
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+
+  cancel_orders:
+    handler: components/orders/handler.sendEmail
+    events:
+      - sqs:
+          arn: arn:aws:sqs:eu-west-1:604091718886:bh_cancel_orders.fifo
+          batchSize: 1
+  add_orders:
+    handler: components/orders/handler.createOrder
+    events:
+      - sqs:
+          arn: arn:aws:sqs:eu-west-1:604091718886:bh_confirm_order.fifo
+          batchSize: 1
+  orders:
+    handler: components/orders/handler.execute
+    events:
+      - http:
+          path: /api/orders
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - limit
+              - last
+            allowCredentials: true
+      - http:
+          path: /api/orders
+          method: post
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /api/orders/payment
+          method: post
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /api/orders/{id}
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /api/orders/user/{id}
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - limit
+              - last
+
+            allowCredentials: true
+      - http:
+          path: /api/orders/{id}
+          method: delete
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+
+  users:
+    handler: components/users/frameworks/web/handler.execute
+    events:
+      - http:
+          path: /users
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /users
+          method: post
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /users
+          method: put
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /users/sign-in
+          method: post
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /users/change-password
+          method: put
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+      - http:
+          path: /users/upload-img
+          method: post
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+
+            allowCredentials: true
+
+resources:
+  Resources:
+    GatewayResponseDefault4XX:
+      Type: "AWS::ApiGateway::GatewayResponse"
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: DEFAULT_4XX
+        RestApiId:
+          Ref: "ApiGatewayRestApi"

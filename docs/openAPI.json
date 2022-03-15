@@ -1,0 +1,1064 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Book House",
+    "version": "1.0.0",
+    "description": "A simple E-commerce application for online books shopping"
+  },
+  "servers": [
+    {
+      "url": "http://loaclhost",
+      "variables": {},
+      "description": "development and testing server"
+    }
+  ],
+  "paths": {
+    "/books": {
+      "summary": "gets all the books",
+      "description": "gets all the books ordered by a published data or number of purchases",
+      "get": {
+        "tags": [
+          "Book"
+        ],
+        "summary": "get all books",
+        "description": "get books with pagination",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "page",
+            "description": "the number of the reqested page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "description": "number of books per page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 6
+            }
+          },
+          {
+            "name": "search",
+            "description": "title of the book",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of books",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "List of books": {
+                    "value": {
+                      "books": [
+                        {
+                          "pk": "books",
+                          "sk": "books#the-book-of-life",
+                          "lsi1pk": "books",
+                          "lsi1sk": "books#development#the-book-of-life",
+                          "lsi2pk": "books",
+                          "lsi2sk": "books#The Book of Life",
+                          "slug": "the-book-of-life",
+                          "title": "The Book of Life",
+                          "author": "Famous Author",
+                          "price": "30",
+                          "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+                          "category": "Sci-Fi",
+                          "publish_at": "08-02-2010"
+                        }
+                      ],
+                      "total": 10
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Book"
+        ],
+        "summary": "add book",
+        "description": "save new book",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "Optional description in",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/book"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/201"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/books/{slug}": {
+      "summary": "single book",
+      "description": "get a single book by id",
+      "get": {
+        "tags": [
+          "Book"
+        ],
+        "summary": "single book",
+        "description": "get single book by id",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "slug",
+            "description": "the slug of the book",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "books#the-book-of-life"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "single book",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "single book": {
+                    "value": {
+                      "pk": "books",
+                      "sk": "books#the-book-of-life",
+                      "lsi1pk": "books",
+                      "lsi1sk": "books#development#the-book-of-life",
+                      "lsi2pk": "books",
+                      "lsi2sk": "books#The Book of Life",
+                      "slug": "the-book-of-life",
+                      "title": "The Book of Life",
+                      "author": "Famous Author",
+                      "price": "30",
+                      "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+                      "category": "Sci-Fi",
+                      "publish_at": "08-02-2010"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Book"
+        ],
+        "summary": "delete single book",
+        "description": "delete single book by id",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "slug",
+            "description": "the slug of the book",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "books#the-book-of-life"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/books/{category}": {
+      "summary": "get books by category",
+      "description": "get all books by the category",
+      "get": {
+        "tags": [
+          "Book"
+        ],
+        "summary": "get books by category",
+        "description": "get all books by category",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "category",
+            "description": "the number of the reqested page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": "books#bookTitle#authorName"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get all books by the category",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "books by category": {
+                    "value": {
+                      "books": [
+                        {
+                          "pk": "books",
+                          "sk": "books#the-book-of-life",
+                          "lsi1pk": "books",
+                          "lsi1sk": "books#development#the-book-of-life",
+                          "lsi2pk": "books",
+                          "lsi2sk": "books#The Book of Life",
+                          "slug": "the-book-of-life",
+                          "title": "The Book of Life",
+                          "author": "Famous Author",
+                          "price": "30",
+                          "photo": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+                          "category": "Sci-Fi",
+                          "publish_at": "08-02-2010"
+                        }
+                      ],
+                      "total": 10
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/categories": {
+      "summary": "gets all the categories",
+      "description": "gets all the categories ordered by a published data or number of purchases",
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "get all categories",
+        "description": "get categories with pagination",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/category_response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "add category",
+        "description": "save new category",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "Optional description in",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/category"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/201"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/category/{slug}": {
+      "summary": "single category",
+      "description": "get a single category by id",
+      "delete": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "delete category",
+        "description": "delete category by id",
+        "operationId": "",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "description": "delete category",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": "web-development"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/users": {
+      "summary": "user sign up",
+      "description": "user sign up",
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Sign up",
+        "description": "User Regestration",
+        "requestBody": {
+          "description": "Optional description in",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/201"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/users/signin": {
+      "summary": "user sign in",
+      "description": "user sign in",
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Sign in",
+        "description": "User Login",
+        "requestBody": {
+          "description": "Optional description in",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user_signin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "summary": "single user",
+      "description": "get a single user by id",
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "get user info",
+        "description": "get user profile info",
+        "operationId": "",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "the number of the reqested page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/user_response"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "update user info",
+        "description": "update user info by id",
+        "operationId": "",
+        "requestBody": {
+          "description": "Optional description in",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "the number of the reqested page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/orders": {
+      "summary": "gets all the orders",
+      "description": "gets all the orders",
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get all orders",
+        "description": "get orders with pagination",
+        "operationId": "",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "description": "the number of the reqested page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "description": "number of orders per page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 6
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/orders_response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "make order",
+        "description": "add new order",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "Optional description in",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/orders"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/201"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "summary": "single order",
+      "description": "get a single order by id",
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "single order",
+        "description": "get single order by id",
+        "operationId": "",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "the number of the reqested page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": "books#bookTitle#authorName"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/order_response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "delete order",
+        "description": "delete order by id",
+        "operationId": "",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "the number of the reqested page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/order/{user_id}": {
+      "summary": "get orders by user id",
+      "description": "get all orders by the user id",
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get orders by user id",
+        "description": "get all orders by user id",
+        "operationId": "",
+        "security": [
+          {
+            "barearAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "description": "the number of the reqested page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": "books#bookTitle#authorName"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/orders_response"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "200": {
+        "description": "Success"
+      },
+      "201": {
+        "description": "Created Successfully"
+      },
+      "400": {
+        "description": "Authentication or validation error"
+      },
+      "404": {
+        "description": "Not Found"
+      },
+      "500": {
+        "description": "Internal server Error"
+      },
+      "category_response": {
+        "description": "list of categories",
+        "content": {
+          "application/json": {
+            "examples": {
+              "List of categories": {
+                "value": [
+                  {
+                    "pk": "category",
+                    "sk": "category#web-development",
+                    "slug": "web-development",
+                    "photo": "photo.jpg",
+                    "title": "Development"
+                  },
+                  {
+                    "pk": "category",
+                    "sk": "category#web-development",
+                    "slug": "web-development",
+                    "photo": "photo.jpg",
+                    "title": "Development"
+                  },
+                  {
+                    "pk": "category",
+                    "sk": "category#web-development",
+                    "slug": "web-development",
+                    "photo": "photo.jpg",
+                    "title": "Development"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "user_response": {
+        "description": "list of categories",
+        "content": {
+          "application/json": {
+            "examples": {
+              "List of categories": {
+                "value": {
+                  "pk": "user",
+                  "sk": "user#1",
+                  "id": "1",
+                  "first_name": "Leanne",
+                  "last_name": "Graham",
+                  "email": "Sincere@april.biz",
+                  "password": "password1",
+                  "photo": "https://tvline.com/wp-content/uploads/2021/08/OKOP-Yaya-DaCosta-.jpg"
+                }
+              }
+            }
+          }
+        }
+      },
+      "orders_response": {
+        "description": "list of categories",
+        "content": {
+          "application/json": {
+            "examples": {
+              "List of categories": {
+                "value": {
+                  "orders": [
+                    {
+                      "pk": "orders",
+                      "sk": "orders#1",
+                      "lsi1pk": "orders",
+                      "lsi1sk": "orders#3",
+                      "products": [
+                        {
+                          "title": "Reminders of Him",
+                          "photo": "image.jpg",
+                          "price": 38,
+                          "quantity": 1
+                        }
+                      ],
+                      "total_price": 250,
+                      "created_at": "2022-2-5",
+                      "user": "Chelsey_Dietrich",
+                      "order_number": "1125",
+                      "shipping_address": {
+                        "street": "Victor Plains",
+                        "suite": "Suite 879",
+                        "city": "Wisokyburgh",
+                        "zipcode": "90566-7771"
+                      },
+                      "status": "pending"
+                    }
+                  ],
+                  "total": 10
+                }
+              }
+            }
+          }
+        }
+      },
+      "order_response": {
+        "description": "single order",
+        "content": {
+          "application/json": {
+            "examples": {
+              "single order": {
+                "value": {
+                  "pk": "orders",
+                  "sk": "orders#1",
+                  "lsi1pk": "orders",
+                  "lsi1sk": "orders#3",
+                  "products": [
+                    {
+                      "title": "Reminders of Him",
+                      "category": "Romance",
+                      "photo": "image.jpg",
+                      "price": 38,
+                      "quantity": 1
+                    }
+                  ],
+                  "total_price": 250,
+                  "created_at": "2022-2-5",
+                  "user": "Chelsey_Dietrich",
+                  "order_number": "1125",
+                  "shipping_address": {
+                    "street": "Victor Plains",
+                    "suite": "Suite 879",
+                    "city": "Wisokyburgh",
+                    "zipcode": "90566-7771"
+                  },
+                  "status": "pending"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "barearAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "book": {
+        "type": "object",
+        "required": [
+          "title",
+          "author",
+          "category",
+          "price",
+          "description",
+          "publish_date",
+          "quantity",
+          "photo"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Atomic Habits"
+          },
+          "author": {
+            "type": "string",
+            "example": "Colleen Hoover"
+          },
+          "category": {
+            "type": "string",
+            "example": "Romance"
+          },
+          "price": {
+            "type": "number",
+            "example": 23
+          },
+          "description": {
+            "type": "string",
+            "example": "this is a great bok"
+          },
+          "quantity": {
+            "type": "number",
+            "example": 25
+          },
+          "publish_date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "link"
+          }
+        }
+      },
+      "category": {
+        "type": "object",
+        "required": [
+          "title",
+          "photo"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Atomic Habits"
+          },
+          "photo": {
+            "type": "string",
+            "example": "photo.jpg"
+          }
+        }
+      },
+      "user": {
+        "type": "object",
+        "required": [
+          "first_name",
+          "last_name",
+          "email",
+          "password"
+        ],
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "example": "John"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "email": {
+            "type": "string",
+            "example": "test@example.com"
+          },
+          "password": {
+            "type": "string",
+            "example": 12345678
+          }
+        }
+      },
+      "user_signin": {
+        "type": "object",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "test@example.com"
+          },
+          "password": {
+            "type": "string",
+            "example": 12345678
+          }
+        }
+      },
+      "orders": {
+        "type": "object",
+        "required": [
+          "products",
+          "created_at",
+          "user",
+          "shipping_address"
+        ],
+        "properties": {
+          "products": {
+            "type": "array",
+            "items": {
+              "example": {
+                "sk": "books#the-book-of-life",
+                "quantity": 1
+              }
+            }
+          },
+          "user": {
+            "type": "string",
+            "example": 250
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Book",
+      "description": "Books Api"
+    },
+    {
+      "name": "Category",
+      "description": "Categories Api"
+    },
+    {
+      "name": "User",
+      "description": "Users Api"
+    },
+    {
+      "name": "Order",
+      "description": "Orders Api"
+    }
+  ]
+}

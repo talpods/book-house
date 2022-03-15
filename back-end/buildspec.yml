@@ -1,0 +1,20 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - echo install phase
+      - cd ./back-end
+      - echo npm
+      - npm install
+      - npm install -g serverless
+
+  #pre_build:
+  #on-failure: ABORT
+  #commands:
+  #- echo pre build phase
+  #- npm test
+
+  build:
+    commands:
+      - echo build phase
+      - serverless deploy
