@@ -1,10 +1,20 @@
 # Book-House
 
-> **This repo is a copy (on 15/06/2022 ) of the code done by Mohammad Hussein, Ahmed Saladin, Mina Merzeq Shafiq & Mohamed Farag at TalPods BootCamp. Code is originally collaborated using AWS Codecommit to use with AWS CodePipeline**
+**This repo is a copy (on 15/06/2022 ) of the code done by Mohammad Hussein, Ahmed Saladin, Mina Merzeq Shafiq & Mohamed Farag at TalPods BootCamp. Code is originally collaborated using AWS Codecommit to use with AWS CodePipeline**
+
+
+> **A book selling portal which will helps visitors get a full experience including payment, order management etc.**
 > 
 
 Demo URL: [https://bookhouse.academy.talpods.io](https://bookhouse.academy.talpods.io/)
 
+**Team size: 4**
+**Team members:**
+
+1. Mohammad Hussein
+2. Ahmed Saladin
+3. Mina Merzeq Shafiq
+4. Mohamed Farag
 
 ### Customer Portal
 
