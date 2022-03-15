@@ -1,17 +1,10 @@
 # Book-House
 
-> **A book selling portal which will helps visitors get a full experience including payment, order management etc.**
+> **This repo is a copy (on 15/06/2022 ) of the code done by Mohammad Hussein, Ahmed Saladin, Mina Merzeq Shafiq & Mohamed Farag at TalPods BootCamp. Code is originally collaborated using AWS Codecommit to use with AWS CodePipeline**
 > 
 
-Demo URL: [http://bookhouse.academy.talpods.io](http://bookhouse.academy.talpods.io/)
+Demo URL: [https://bookhouse.academy.talpods.io](https://bookhouse.academy.talpods.io/)
 
-**Team size: 4**
-**Team members:**
-
-1. Mohammad Hussein
-2. Ahmed Saladin
-3. Mina Merzeq Shafiq
-4. Mohamed Farag
 
 ### Customer Portal
 
@@ -42,8 +35,3 @@ Node.js, Express, Serverless Framework, AWS Lambda, DynamoDB, Jest, joi schema v
 > **Front-end:**
 TailwindCSS, React, Axios,  Jest, React testing library, React Router, AWS S3, AWS CloudFront
 > 
-
-## Outcome
-
-> Project completed in 5 weeks. Most of the above mentioned skills they learned during the project execution. It is a well executed project in line with our expectation of a Junior engineer.
->
